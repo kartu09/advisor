@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/TFGSCA.iml" filepath="$PROJECT_DIR$/.idea/TFGSCA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/advisor/advisor.iml" filepath="$PROJECT_DIR$/advisor/advisor.iml" />
     </modules>
   </component>
 </project>
