@@ -8,11 +8,9 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Entity
 @Table(name = "user")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class player {
+public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,5 +24,5 @@ public class player {
     private LocalDateTime creationDate;
 
     @Column(name = "team", nullable = false)
-    private Team team;
+    private String team;
 }

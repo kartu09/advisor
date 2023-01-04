@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,28 +18,30 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "user")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false, length = 11)
+    @NotNull
+    @Column(name = "id", unique = true, length = 11)
     private Integer id;
 
-    @Column(name = "password", nullable = false)
+    @NotNull
+    @Column(name = "password")
     private String password;
 
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
-    @JoinColumn(name = "role", nullable = false)
-    private Role role;
+    @NotNull
+    @Column(name = "role")
+    private String role;
 
-    @Column(name = "creation_date", nullable = false)
+    @NotNull
+    @Column(name = "creation_date")
     private LocalDateTime creationDate;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @NotNull
+    @Column(name = "email", unique = true)
     private String email;
 }

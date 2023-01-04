@@ -6,26 +6,37 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "team")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
+    @NotNull
+    @Column(name = "id", unique = true)
     private Integer id;
 
-    @Column(name = "name", length = 100, unique = true, nullable = false)
+    @NotNull
+    @Column(name = "name", length = 100, unique = true)
     private String name;
 
-    @Column(name = "description", nullable = false, length = 500)
+    @NotNull
+    @Column(name = "description", length = 500)
     private String description;
 
-    @Column( name = "creation_date", nullable = false)
+    @NotNull
+    @Column( name = "creation_date")
     private LocalDate creationDate;
 
+    public Team(@NotNull Integer id, @NotNull String name, @NotNull String description, @NotNull LocalDate creationDate) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.creationDate = creationDate;
+    }
+
+    public Team() {
+    }
 }

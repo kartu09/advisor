@@ -1,45 +1,135 @@
 package com.example.scadvisor.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "match")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Table(name = "matchs")
 public class Match {
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name", length = 100, unique = true, nullable = false)
+    @NotNull
+    @Column(name = "name", length = 100)
     private String name;
 
-    @Column(name = "description", nullable = false, length = 500)
+    @NotNull
+    @Column(name = "description", length = 500)
     private String description;
 
-    @Column( name = "creation_date", nullable = false)
+    @NotNull
+    @Column( name = "creation_date")
     private LocalDate creationDate;
 
+    @NotNull
     @Column(name = "matchDate", nullable = false)
     private LocalDateTime matchDate;
 
-    @Column(name = "local", nullable = false, length = 500)
-    private Team local;
+    @NotNull
+    @Column(name = "local", length = 500)
+    private String local;
 
-    @Column(name = "visitante", nullable = false, length = 500)
-    private Team visitante;
+    @NotNull
+    @Column(name = "visitante", length = 500)
+    private String visitante;
 
-    @Column(name = "marcadorLocal", nullable = false)
+    @NotNull
+    @Column(name = "marcadorLocal")
     private Integer marcadorLocal;
 
-    @Column(name = "marcadorVisitante", nullable = false)
+    @NotNull
+    @Column(name = "marcadorVisitante")
     private Integer marcadorVisitante;
+
+    public Match() {
+    }
+
+    public Match(@NotNull Integer id, @NotNull String name, @NotNull String description, @NotNull LocalDate creationDate, @NotNull LocalDateTime matchDate, @NotNull String local, @NotNull String visitante, @NotNull Integer marcadorLocal, @NotNull Integer marcadorVisitante) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.creationDate = creationDate;
+        this.matchDate = matchDate;
+        this.local = local;
+        this.visitante = visitante;
+        this.marcadorLocal = marcadorLocal;
+        this.marcadorVisitante = marcadorVisitante;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public LocalDateTime getMatchDate() {
+        return matchDate;
+    }
+
+    public void setMatchDate(LocalDateTime matchDate) {
+        this.matchDate = matchDate;
+    }
+
+    public Integer getMarcadorLocal() {
+        return marcadorLocal;
+    }
+
+    public void setMarcadorLocal(Integer marcadorLocal) {
+        this.marcadorLocal = marcadorLocal;
+    }
+
+    public Integer getMarcadorVisitante() {
+        return marcadorVisitante;
+    }
+
+    public void setMarcadorVisitante(Integer marcadorVisitante) {
+        this.marcadorVisitante = marcadorVisitante;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    public String getVisitante() {
+        return visitante;
+    }
+
+    public void setVisitante(String visitante) {
+        this.visitante = visitante;
+    }
 }
