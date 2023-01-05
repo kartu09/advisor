@@ -1,10 +1,6 @@
 package com.example.scadvisor.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 @Entity
@@ -17,4 +13,29 @@ public class Role {
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    public Role() {
+    }
+
+    public Role(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }
