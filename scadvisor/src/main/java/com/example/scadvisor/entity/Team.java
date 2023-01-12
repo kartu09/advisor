@@ -1,13 +1,9 @@
 package com.example.scadvisor.entity;
 
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "team")
@@ -25,6 +21,9 @@ public class Team {
     @NotNull
     @Column(name = "description", length = 500)
     private String description;
+
+    @OneToMany(mappedBy = "team")
+    private List<Player> players;
 
     @NotNull
     @Column( name = "creation_date")
@@ -70,5 +69,13 @@ public class Team {
 
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
     }
 }

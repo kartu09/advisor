@@ -23,8 +23,9 @@ public class Player {
     @Column(name = "creation_date", nullable = false)
     private LocalDateTime creationDate;
 
-    @Column(name = "team", nullable = false)
-    private String team;
+//    @Column(name = "team", nullable = false)
+    @ManyToOne
+    private Team team;
 
     public Integer getId() {
         return id;
@@ -50,11 +51,11 @@ public class Player {
         this.creationDate = creationDate;
     }
 
-    public String getTeam() {
+    public Team getTeam() {
         return team;
     }
 
-    public void setTeam(String team) {
+    public void setTeam(Team team) {
         this.team = team;
     }
 }
