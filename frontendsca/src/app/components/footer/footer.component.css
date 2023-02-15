@@ -1,0 +1,22 @@
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%; 
+}
+
+.footercolor {
+  background-color: #666666;
+  color:whitesmoke;
+  
+}
+
+.nomargin {
+  max-width: 100% !important; 
+  display: flex;
+  align-items: baseline;
+}
+
+.maxwidth {
+  width: 100% !important;
+}

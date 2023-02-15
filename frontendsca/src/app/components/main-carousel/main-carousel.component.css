@@ -1,0 +1,29 @@
+.carousel {
+    display: flex;
+    justify-content: space-evenly;
+    left:25%;
+    background-color: #666666;
+    color: whitesmoke;
+    width: 50%;
+}
+
+.item-carousel {
+    height: 5em;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    height: fit-content;
+    width: fit-content;
+}
+
+.img-carousel {
+    height: 10em;
+    width: 10em;
+}
+
+.centrado{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
