@@ -13,4 +13,6 @@ public interface UserService {
     User getUser (Integer id) throws RuntimeException;
 
     List<User> getAll() throws RuntimeException;
+
+    void save(User user);
 }

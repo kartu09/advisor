@@ -1,3 +1,19 @@
-<app-mainmenu></app-mainmenu>
-<app-mainpage> </app-mainpage>
-<app-footer></app-footer>
+
+  <app-mainmenu></app-mainmenu>
+  <main class="flex-fill">
+    <!-- Contenido del componente principal -->
+    <div class="row" *ngIf="true">
+      <div class="col-md-2">
+        <app-side-menu> </app-side-menu>
+      </div>
+      <div class="col-md-8">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+  </main>
+  <app-footer></app-footer>
+
+
+  

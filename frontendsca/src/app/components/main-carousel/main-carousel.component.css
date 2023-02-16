@@ -1,7 +1,7 @@
 .carousel {
     display: flex;
     justify-content: space-evenly;
-    left:25%;
+    
     background-color: #666666;
     color: whitesmoke;
     width: 50%;

@@ -65,4 +65,10 @@ public class UserServiceImpl implements UserService{
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void save(User user) {
+        userRepository.save(user);
+    }
+
 }
