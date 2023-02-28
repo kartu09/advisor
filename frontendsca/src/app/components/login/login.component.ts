@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Role } from 'src/app/enums/Role';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,23 +10,26 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  username: string | undefined;
+  password: string | undefined; 
   loginForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
-  onSubmit(): void {
-    const { username, password } = this.loginForm.value;
-    this.authService.login(username, password).subscribe(
-      response => {
-        // Aquí puedes almacenar el token en localStorage o en una cookie
-        console.log(response.token);
+  onSubmit() {
+    this.http.post('/login', { username: this.username, password: this.password }, { responseType: 'text' }).subscribe(
+      (response) => {
+        // Si la respuesta es satisfactoria, redirecciona al usuario a la página de inicio
+        
+        window.location.href = '/home';
       },
-      error => {
+      (error) => {
+        // Si hay un error en la respuesta, muestra un mensaje de error en la consola
         console.error(error);
       }
     );

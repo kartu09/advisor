@@ -12,6 +12,9 @@ import { MainCarouselComponent } from './components/main-carousel/main-carousel.
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './components/signup/signup.component';
+import { MainTableComponent } from './components/main-table/main-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 // import { UserComponent } from './components/user/user.component';
 
 @NgModule({
@@ -23,7 +26,8 @@ import { SignupComponent } from './components/signup/signup.component';
     MainCarouselComponent,
     SideMenuComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    MainTableComponent
 //     UserComponent
   ],
   imports: [
@@ -31,7 +35,9 @@ import { SignupComponent } from './components/signup/signup.component';
     AppRoutingModule,
     FormsModule, 
     ReactiveFormsModule, 
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [ FormBuilder],
   bootstrap: [AppComponent]

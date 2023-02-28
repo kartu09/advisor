@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.io.Serializable;
 
 @Repository("teamRepository")
-public interface TeamRepository extends CrudRepository<Team, Integer> {
+public interface TeamRepository extends JpaRepository<Team, Integer> {
 
 }

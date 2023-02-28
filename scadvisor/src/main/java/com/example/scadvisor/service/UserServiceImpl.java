@@ -3,9 +3,12 @@ package com.example.scadvisor.service;
 import com.example.scadvisor.entity.User;
 import com.example.scadvisor.repository.UserRepository;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,12 +24,17 @@ public class UserServiceImpl implements UserService{
     public User createUser(User user) {
         try {
             if(user != null) {
-                Optional<User> userToSave = userRepository.findById(user.getId());
-                if (userToSave.isPresent()){
-                } else {
-                    User userSaved = userRepository.save(user);
+                User userToSave = new User();
+                userToSave.setUsername(user.getUsername());
+                userToSave.setName(user.getName());
+                userToSave.setEmail(user.getEmail());
+                userToSave.setRole(user.getRole());
+                userToSave.setPassword(user.getPassword());
+                userToSave.setDateOfBirth(user.getDateOfBirth());
+                userToSave.setCreationDate(LocalDateTime.now());
+                    User userSaved = userRepository.save(userToSave);
                     return userSaved;
-                }
+
             }
         } catch (RuntimeException e) {
             throw new RuntimeException(e + "No se puede crear el nuevo user");

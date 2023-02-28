@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository("matchRepository")
-public interface MatchRepository extends CrudRepository<Match, Integer> {
+public interface MatchRepository extends JpaRepository<Match, Integer> {
 
 }

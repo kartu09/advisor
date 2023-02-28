@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.io.Serializable;
 
 @Repository("playerRepository")
-public interface PlayerRepository extends CrudRepository<Player, Integer> {
+public interface PlayerRepository extends JpaRepository<Player, Integer> {
 
 }

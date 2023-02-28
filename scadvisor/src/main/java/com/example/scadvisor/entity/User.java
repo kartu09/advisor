@@ -12,13 +12,21 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "user")
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
     @Column(name = "id", unique = true, length = 11)
     private Integer id;
+
+    @Column(nullable = false, unique = true)
+    private String username;
+
+    @NotNull
+    @Column(name = "name")
+    private String name;
 
     @NotNull
     @Column(name = "password")
@@ -27,7 +35,7 @@ public class User {
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
-    @OneToOne
+    @Enumerated
     private Role role;
 
     @NotNull
@@ -37,6 +45,22 @@ public class User {
     @NotNull
     @Column(name = "email", unique = true)
     private String email;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;

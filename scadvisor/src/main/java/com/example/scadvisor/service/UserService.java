@@ -1,6 +1,5 @@
 package com.example.scadvisor.service;
 
-import com.example.scadvisor.entity.Team;
 import com.example.scadvisor.entity.User;
 
 import java.util.List;

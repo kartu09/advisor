@@ -1,13 +1,17 @@
-<div class="row">
-    <div class="col-md-12 black">
-        <app-main-carousel> </app-main-carousel>
+<div class="container" >
+    <div class="row-1">
+        <div class="col-md-12 black">
+            <app-main-table> </app-main-table>
+        </div>
+    </div>
+    <div class="row-2">
+        <div class="col-md-4 black">
+            <p>Información del usuario</p>
+            <p>{{user.name}}</p>
+        </div>
+        <div class="col-md-8 black h-50">
+            <app-main-carousel> </app-main-carousel>
+        </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-4 black">
-        <app-main-carousel> </app-main-carousel>
-    </div>
-    <div class="col-md-8 black h-50">
-        <app-main-carousel> </app-main-carousel>
-    </div>
-</div>
+
