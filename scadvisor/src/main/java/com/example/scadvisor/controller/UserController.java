@@ -32,7 +32,7 @@ public class UserController {
         return userService.getAll();
     }
 
-    @PostMapping("/new")
+    @PostMapping(value= "/new", consumes = "application/json")
     public void newUser(@RequestBody User user){
         logger.info("Creating new user:" + user.getName());
         userService.createUser(user);

@@ -38,6 +38,7 @@ public class LoginController {
 
         if (user != null && user.getPassword().equals(password)) {
             session.setAttribute("user", user);
+            logger.info("user añadido a la sesión " );
             return "redirect:/home";
         } else {
             return "redirect:/login?error";

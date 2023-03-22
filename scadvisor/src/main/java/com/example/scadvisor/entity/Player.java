@@ -9,7 +9,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "user")
+@Table(name = "player")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Player {
 
     @Id
@@ -23,39 +26,13 @@ public class Player {
     @Column(name = "creation_date", nullable = false)
     private LocalDateTime creationDate;
 
-//    @Column(name = "team", nullable = false)
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "dorsal", nullable = false)
+    private Integer dorsal;
+
     @ManyToOne
+    @JoinColumn(name = "team_id")
     private Team team;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public LocalDateTime getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
 }

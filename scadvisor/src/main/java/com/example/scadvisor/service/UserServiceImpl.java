@@ -32,8 +32,8 @@ public class UserServiceImpl implements UserService{
                 userToSave.setPassword(user.getPassword());
                 userToSave.setDateOfBirth(user.getDateOfBirth());
                 userToSave.setCreationDate(LocalDateTime.now());
-                    User userSaved = userRepository.save(userToSave);
-                    return userSaved;
+                User userSaved = userRepository.save(userToSave);
+                return userSaved;
 
             }
         } catch (RuntimeException e) {
