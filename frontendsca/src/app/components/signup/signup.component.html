@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="form-outline mb-4">
-                  <select [(ngModel)]="selectedRole">
+                  <select [(ngModel)]="usuario.role" name="role">
                     <option *ngFor="let role of roles" [value]="role" >{{ role }}</option>
                   </select>
                   <p><label class="form-label" for="role">Role</label></p>

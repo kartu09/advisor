@@ -1,19 +1,24 @@
 
+<header class="absol-header">
   <app-mainmenu></app-mainmenu>
-  <main class="flex-fill">
-    <!-- Contenido del componente principal -->
-    <div class="row" *ngIf="true">
-      <div class="col-md-2">
-        <app-side-menu> </app-side-menu>
-      </div>
-      <div class="col-md-8">
-        <router-outlet></router-outlet>
-      </div>
-      <div class="col-md-2">
-      </div>
+</header>
+  
+<main class="flex-fill bodySpace">
+  <!-- Contenido del componente principal -->
+  <div class="row" >
+    <div class="col-md-10">
+      <router-outlet></router-outlet>
     </div>
-  </main>
+    <div class="col-md-2">
+      <app-main-carousel></app-main-carousel>
+    </div>
+  </div>
+</main>
+
+<footer>
   <app-footer></app-footer>
+</footer>
+  
 
 
   

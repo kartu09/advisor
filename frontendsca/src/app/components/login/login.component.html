@@ -13,10 +13,10 @@
                   <h4 class="mt-1 mb-5 pb-1">Soccer Coach Advisor</h4>
                 </div>
 
-                <form>
+                <form (ngSubmit)="login()" #loginForm="ngForm">
                   <div class="form-outline mb-4">
                     <label class="form-label" for="username">Username</label>
-                    <input type="text" id="username" class="form-control" [(ngModel)]="username" name="username" placeholder="Phone number or email address" required/>
+                    <input type="text" id="username" class="form-control" [(ngModel)]="username" name="username" placeholder="Username" required/>
                   </div>
 
                   <div class="form-outline mb-4">
@@ -25,7 +25,7 @@
                   </div>
                   <a class="text-muted" href="#!">Forgot password?</a>
                   <div class="text-center pt-1 mb-5 pb-1">
-                    <button class="btn btn-primary btn-block fa-lg gradient-custom-4 mb-3" type="submit">Log in</button>
+                    <button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-4 mb-3" >Log in</button>
                   </div>
 
                   <div class="d-flex align-items-center justify-content-center pb-4">

@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Role } from 'src/app/enums/Role';
 import { AuthService } from 'src/app/services/auth.service';
+import { LoginService } from 'src/app/services/login.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -10,28 +12,28 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username: string | undefined;
-  password: string | undefined; 
+  username: string = '';
+  password: string = ''; 
   loginForm: FormGroup;
-  
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private loginService: LoginService) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
+  
 
-  onSubmit() {
-    this.http.post('/login', { username: this.username, password: this.password }, { responseType: 'text' }).subscribe(
-      (response) => {
-        // Si la respuesta es satisfactoria, redirecciona al usuario a la página de inicio
-        
-        window.location.href = '/home';
-      },
-      (error) => {
-        // Si hay un error en la respuesta, muestra un mensaje de error en la consola
-        console.error(error);
-      }
-    );
+  login() {
+    try {
+      console.log('Intentamos login')
+      this.loginService.login(this.username, this.password)
+        .subscribe(response => {
+          console.log('LOGIN SUCCESSFULL');
+        });
+    } catch (error) {
+      console.error(error);
+    }
   }
+
 }

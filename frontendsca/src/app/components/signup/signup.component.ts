@@ -10,7 +10,14 @@ import { Role } from 'src/app/enums/Role';
 })
 export class SignupComponent {
   selectedRole: Role = Role.USER;
-  usuario: User = new User();
+  usuario: User = {
+    dateOfBirth: '',
+    email: '',
+    name: '',
+    password: '',
+    role: Role.USER,
+    username: ''
+  };
 
   roles = [
     Role.USER,
@@ -25,6 +32,6 @@ export class SignupComponent {
       console.log(response);
     });
   }
-    
-  
+
+
 }

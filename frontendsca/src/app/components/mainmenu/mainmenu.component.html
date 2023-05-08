@@ -1,20 +1,29 @@
-<header class="absol-header ">
-  <nav class="navbar navbar-dark bg-primary navbar-inverse header">
-    <div class="container-fluid maxheight">
-      <div class="navbar-header maxheight">
-        <a class="mainicon menuitem maxheight" href="#">SoccerCoachAdvisor</a>
-      </div>
-      <ul class="menutop">
-        <li class="active"><a class="menuitem maxheight" routerLink="/home">Home</a></li>
-        <li class="maxheight"><a class="menuitem maxheight" routerLink="/partidos">Partidos</a></li>
-        <li class="maxheight"><a class="menuitem maxheight" routerLink="/equipos">Equipos</a></li>
-      </ul>
-      <ul class="navbar-right menutop">
-        <li class="maxheight"><a class="menuitem maxheight button" routerLink="/signup">Sign Up</a></li>
-        <li class="maxheight"><a class="menuitem maxheight" routerLink="/login">Login</a></li>
-        <li class="maxheight"><a class="menuitem maxheight" routerLink="/settings"><i class="bi bi-nut"></i></a></li>
-      </ul>
+
+<nav class="navbar navbar-dark bg-primary navbar-inverse header">
+  <div class="container-fluid maxheight">
+    <div class="navbar-header maxheight">
+      <a class="mainicon menuitem maxheight" href="#">SoccerCoachAdvisor</a>
     </div>
-  </nav>
-</header>
+    <ul class="menutop">
+      <li class="active"><a class="menuitem maxheight" routerLink="/home">Home</a></li>
+      <li class="maxheight"><a class="menuitem maxheight" routerLink="/partidos">Partidos</a></li>
+      <li class="maxheight"><a class="menuitem maxheight" routerLink="/equipos">Equipos</a></li>
+      <li class="maxheight" *ngIf="connected"><a class="menuitem maxheight" routerLink="/opiniones">Ayudar Mister</a></li>
+      <li class="maxheight" *ngIf="connected "><a class="menuitem maxheight" routerLink="/opiniones">Tacticas disponibles</a></li>
+    </ul>
+
+    <button (click)="toggleConnection()" [ngClass]="{'connected': authenticated, 'disconnected': !connected}">
+      {{ connected ? 'Desconectar' : 'Conectar' }}
+    </button>
+
+    <button *ngIf="!connected" (click)="changeRole()">{{ role }}</button>
+
+    <ul class="navbar-right menutop">
+      <li *ngIf="!connected" class="maxheight"><a class="menuitem maxheight button" routerLink="/signup">Sign Up</a></li>
+      <li *ngIf="connected" class="maxheight"><a class="menuitem maxheight button" (click)="logout()">Logout</a></li>
+      <li *ngIf="!connected" class="maxheight"><a class="menuitem maxheight" routerLink="/login">Login</a></li>
+      <li *ngIf="connected" class="maxheight"><a class="menuitem maxheight" routerLink="/settings"><i class="bi bi-nut"></i></a></li>
+    </ul>
+  </div>
+</nav>
 

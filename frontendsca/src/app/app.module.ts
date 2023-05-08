@@ -13,8 +13,18 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './components/signup/signup.component';
 import { MainTableComponent } from './components/main-table/main-table.component';
+import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { AgGridModule } from 'ag-grid-angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatchTableComponent } from './components/match-table/match-table.component';
+import { PartidosComponent } from './components/partidos/partidos.component';
+
 // import { UserComponent } from './components/user/user.component';
 
 @NgModule({
@@ -27,7 +37,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     SideMenuComponent,
     LoginComponent,
     SignupComponent,
-    MainTableComponent
+    MainTableComponent,
+    MatchTableComponent,
+    PartidosComponent
 //     UserComponent
   ],
   imports: [
@@ -37,7 +49,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ReactiveFormsModule, 
     HttpClientModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    BrowserAnimationsModule,
+    AgGridModule,
+    MatSortModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule, 
+    MatToolbarModule
   ],
   providers: [ FormBuilder],
   bootstrap: [AppComponent]

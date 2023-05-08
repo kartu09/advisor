@@ -7,6 +7,10 @@
     width: 50%;
 }
 
+.oscuro {
+    background-color: #f38d8d;
+}
+
 .item-carousel {
     height: 5em;
     position: relative;
@@ -27,3 +31,33 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.widgets {
+    position: fixed;
+    top: 6%;
+    right: 0;
+    height: 60%;
+    width: 300px;
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+  
+  .widget {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .calendar {
+    height: 200px;
+    /* Reglas de estilo para el widget de calendario */
+  }
+  
+  .weather {
+    height: 200px;
+    /* Reglas de estilo para el widget de clima */
+  }
+
+  .other {
+    height: 200px;
+  }

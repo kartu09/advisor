@@ -1,11 +1,10 @@
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
+.absol-header {
+  position: absolute;
   width: 100%;
-  background-color: #ffffff;
+  height: fit-content;
+
 }
 
-main {
-  padding-top: 100px; 
+.bodySpace {
+  padding-top: 50px;
 }

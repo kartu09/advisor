@@ -12,10 +12,12 @@ export class MainpageComponent {
   public user: User = {
     username: 'carlos',
     name: 'Carlos',
-    dateOfBirth: new Date('09/11/1198'),
+    dateOfBirth: '09/11/1198',
+    // role: Role.USER,
     role: Role.USER,
     email: 'carlos@elca.ch',
-    password: ''
+    password: '',
+    // creationDate: new Date()
   }
   private users: User[] = [];
 
@@ -24,6 +26,7 @@ export class MainpageComponent {
 
   ngOnInit(): void {
     this.userService.getUser(1).subscribe(user=> {
+      console.log('Obteniendo usuario 1', user);
       this.user = user;
     })
 
