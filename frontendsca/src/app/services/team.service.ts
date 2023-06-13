@@ -1,41 +1,50 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Team } from '../interfaces/team/team';
+import Team from '../interfaces/team/team';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, doc } from '@angular/fire/firestore';
+import { AuthService } from './auth.service';
+import { setDoc } from 'firebase/firestore';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamService {
-  private apiUrl = 'http://localhost:8080/teams'; // URL de la API del backend
 
-  constructor(private http: HttpClient) { }
+  constructor(private firestore: Firestore, private authService: AuthService) { 
+  }
 
   // Método para obtener todos los equipos
   getAll(): Observable<Team[]> {
-    return this.http.get<Team[]>(this.apiUrl);
+    const teamRef = collection(this.firestore, 'team');
+		return collectionData(teamRef, {idField:'id'}) as Observable<Team[]>;
   }
 
   // Método para obtener un equipo por ID
-  getById(id: number): Observable<Team> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.get<Team>(url);
+  getById(id: number){
+    return null;
   }
 
   // Método para crear un nuevo equipo
-  create(team: Team): Observable<Team> {
-    return this.http.post<Team>(this.apiUrl, team);
+  createTeam(team: Team){
+    const teamRef = collection(this.firestore, 'team');
+    team.coachId = this.authService.getUserId();
+		return addDoc(teamRef, team);
   }
 
   // Método para actualizar un equipo existente
-  update(team: Team): Observable<Team> {
-    const url = `${this.apiUrl}/${team.id}`;
-    return this.http.put<Team>(url, team);
+  update(team: Team){
+    this.deleteTeam(team);
+    console.log('equipo eliminado');
+
+    this.createTeam(team);
+    console.log('equipo creado');
+    return team;
   }
 
   // Método para eliminar un equipo existente
-  delete(id: number): Observable<Team> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.delete<Team>(url);
+  deleteTeam(team: Team){
+    const teamDocRef = doc(this.firestore, 'team/'+team.id)
+		return deleteDoc(teamDocRef);
   }
 }

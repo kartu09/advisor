@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/interfaces/user/user';
-import { Role } from 'src/app/enums/Role';
+import { Role } from 'src/app/enums/role';
+import { AuthService } from 'src/app/services/auth.service';
+import Usuario from 'src/app/interfaces/usuario/Usuario';
+import { TacticService } from 'src/app/services/tactic.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,13 +12,10 @@ import { Role } from 'src/app/enums/Role';
 })
 export class SignupComponent {
   selectedRole: Role = Role.USER;
-  usuario: User = {
-    dateOfBirth: '',
+  usuario: Usuario = {
     email: '',
-    name: '',
-    password: '',
     role: Role.USER,
-    username: ''
+    password: ''
   };
 
   roles = [
@@ -25,12 +24,21 @@ export class SignupComponent {
     Role.COACH
   ];
 
-  constructor(private userService: UserService) {}
+  constructor(private authService: AuthService, private tacticService: TacticService) {}
 
-  registrar(){
-    this.userService.newUser(this.usuario).subscribe(response => {
+  async registrar(user: Usuario){
+    console.log(user);
+    if (user.email != null && user.password && user.role){
+      this.tacticService.createUser(user);
+      const response = await this.authService.registerUser(user.email, user.password, user.role);
       console.log(response);
-    });
+      //
+    }
+    else {
+      console.log('No se puede registrar porque alguna propiedad es null o undefined')
+    }
+    
+    
   }
 
 

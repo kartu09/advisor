@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { Role } from 'src/app/enums/Role';
+import { Role } from 'src/app/enums/role';
+import Usuario from 'src/app/interfaces/usuario/Usuario';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-mainmenu',
@@ -8,37 +10,49 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./mainmenu.component.css']
 })
 export class MainmenuComponent {
-  authenticated: boolean;
   connected: boolean = false;
   role: Role = Role.USER;
   isAdmin: boolean = false;
   isCoach: boolean = false;
+  userAuthenticated: boolean;
 
-  currentUser: { username: string, role: Role, authenticated: boolean };
+  currentUser: Usuario = {
+    email: '',
+  };
 
-  constructor(private authService: AuthService) {
-    this.authenticated =  this.connected;
-    this.currentUser = this.authService.getCurrentUser();
+  constructor(private authService: AuthService, private userService: UserService) {
+    
+    this.userAuthenticated = authService.isAuthenticated();
+    this.connected = this.userAuthenticated;
+
+  }
+
+  ngOnInit() {
+    this.getCurrentUser();
+  }
+
+  getCurrentUser() {
+    console.log('USUARIO ACTUAL');
+    this.currentUser =  this.authService.getCurrentUser();
+    console.log(this.currentUser);
   }
 
 
   isAuthenticated() {
-    return this.authenticated == true;
+    return this.userAuthenticated == true;
   }
 
   logout() {
-    //this.authService.logout();
-    this.authService.changeLogged();
-    this.connected = false;
+    this.authService.cerrarSesion();
   }
 
-  toggleConnection() {
+  /* toggleConnection() {
     //this.connected = !this.connected;
     this.authService.changeLogged();
     this.connected = !this.connected;
-  }
+  } */
 
-  changeRole() {
+  /* changeRole() {
     switch (this.role) {
       case Role.USER:
         this.role = Role.ADMIN;
@@ -60,5 +74,5 @@ export class MainmenuComponent {
         this.isCoach = false;
         break;
     }
-  }
+  } */
 }

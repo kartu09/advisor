@@ -7,22 +7,7 @@
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-              <form (ngSubmit)="registrar()" #signupForm="ngForm">
-
-                <div class="form-outline mb-4">
-                  <input class="form-control form-control-lg" type="text" id="username" name="username" [(ngModel)]="usuario.username" required/>
-                  <label class="form-label" for="username">Username</label>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input class="form-control form-control-lg" type="text" id="name" name="name" [(ngModel)]="usuario.name" required/>
-                  <label class="form-label" for="name">Name</label>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input class="form-control form-control-lg" type="date" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="usuario.dateOfBirth" required/>
-                  <label class="form-label" for="dateOfBirth">Birthdate</label>
-                </div>
+              <form (ngSubmit)="registrar(signupForm.value)" #signupForm="ngForm">
 
                 <div class="form-outline mb-4">
                   <input class="form-control form-control-lg" type="email" id="email" name="email" [(ngModel)]="usuario.email" required/>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Role } from 'src/app/enums/Role';
-import { User } from 'src/app/interfaces/user/user';
+import { Role } from 'src/app/enums/role';
 import { UserService } from '../../services/user.service';
+import User from 'src/app/interfaces/usuario/Usuario';
 
 @Component({
   selector: 'app-mainpage',
@@ -10,14 +10,9 @@ import { UserService } from '../../services/user.service';
 })
 export class MainpageComponent {
   public user: User = {
-    username: 'carlos',
-    name: 'Carlos',
-    dateOfBirth: '09/11/1198',
-    // role: Role.USER,
     role: Role.USER,
     email: 'carlos@elca.ch',
-    password: '',
-    // creationDate: new Date()
+    password: ''
   }
   private users: User[] = [];
 
@@ -25,14 +20,10 @@ export class MainpageComponent {
   }
 
   ngOnInit(): void {
-    this.userService.getUser(1).subscribe(user=> {
-      console.log('Obteniendo usuario 1', user);
-      this.user = user;
-    })
 
-    this.userService.getAll().subscribe((data: User[]) => {
-      this.users = data;
-      console.log(data);
+    this.userService.getAll().subscribe(users => {
+      console.log(users);
+      this.users = users;
     });
   }
 

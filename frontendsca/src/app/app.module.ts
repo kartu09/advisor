@@ -16,7 +16,6 @@ import { MainTableComponent } from './components/main-table/main-table.component
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { AgGridModule } from 'ag-grid-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,6 +23,17 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatchTableComponent } from './components/match-table/match-table.component';
 import { PartidosComponent } from './components/partidos/partidos.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { TacticsComponent } from './components/tactics/tactics.component';
+import { EquiposComponent } from './components/equipos/equipos.component';
+import { AjustesComponent } from './components/ajustes/ajustes.component';
+import { GridIconComponent } from './components/grid-icon/grid-icon.component';
+import { InformacionComponent } from './components/informacion/informacion.component';
+import { OpinionesComponent } from './components/opiniones/opiniones.component';
+
 
 // import { UserComponent } from './components/user/user.component';
 
@@ -39,7 +49,13 @@ import { PartidosComponent } from './components/partidos/partidos.component';
     SignupComponent,
     MainTableComponent,
     MatchTableComponent,
-    PartidosComponent
+    PartidosComponent,
+    EquiposComponent,
+    TacticsComponent,
+    AjustesComponent,
+    GridIconComponent,
+    InformacionComponent,
+    OpinionesComponent
 //     UserComponent
   ],
   imports: [
@@ -51,12 +67,14 @@ import { PartidosComponent } from './components/partidos/partidos.component';
     MatTableModule,
     MatPaginatorModule,
     BrowserAnimationsModule,
-    AgGridModule,
     MatSortModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule, 
-    MatToolbarModule
+    MatToolbarModule, 
+    provideFirebaseApp(() => initializeApp(environment.firebase)), 
+    provideFirestore(() => getFirestore()),
+    provideAuth(()=>getAuth())
   ],
   providers: [ FormBuilder],
   bootstrap: [AppComponent]

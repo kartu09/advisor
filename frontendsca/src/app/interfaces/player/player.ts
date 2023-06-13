@@ -1,9 +1,8 @@
-import { Team } from "../team/team";
-
-export interface Player {
+export default interface Player {
     id?: number;
-    name: string;
-    dorsal: number;
-    dateOfBirth: string;
-    team: number;
+    name?: string;
+    dorsal?: number;
+    edad?: number;
+    teamId?: number;
+    teamName?: string;
 }
