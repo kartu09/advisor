@@ -70,20 +70,6 @@ export class AuthService {
     
   }
 
-  /* private updateUserData(user: User, rol: Role, pass: string) {
-    console.log(user);
-    
-
-    const data: Usuario = {
-      id: user.uid,
-      password: pass,
-      email: user.email ? user.email : undefined,
-      role: rol
-    }
-
-    const genteRef = collection(this.firestore, 'gente');
-		return addDoc(genteRef, data);
-  } */
 
   loginEmailUser(email: string, pass: string) {
     return new Promise((resolve, reject) => {
@@ -110,28 +96,11 @@ export class AuthService {
     return this.userId;
   }
 
-  async isUserAdmin(userUid: any){
-    const q = query(collection(this.firestore, 'users'), where('userUid', '==', userUid));
-    const querySnapshot = await getDocs(q);
-
-    if (querySnapshot.size > 0) {
-      const user = querySnapshot.docs[0].data() as DocumentData;
-      return user['role'] === 'admin';
+  getUserEmail(): string {
+    if (this.email) {
+      return this.email;
     }
-
-    return false;
-  }
-
-  async isUserCoach(userUid: any){
-    const q = query(collection(this.firestore, 'users'), where('userUid', '==', userUid));
-    const querySnapshot = await getDocs(q);
-
-    if (querySnapshot.size > 0) {
-      const user = querySnapshot.docs[0].data() as DocumentData;
-      return user['role'] === 'coach';
-    }
-
-    return false;
+    return '';
   }
 
   cerrarSesion() {

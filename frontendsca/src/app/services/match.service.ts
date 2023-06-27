@@ -32,6 +32,11 @@ export class MatchService {
 
   // Método para actualizar un equipo existente
   update(match: Match){
+    this.deleteMatch(match);
+    console.log('partido eliminado');
+
+    this.createMatch(match);
+    console.log('partido creado');
     return match;
   }
 

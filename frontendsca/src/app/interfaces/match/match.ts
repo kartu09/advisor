@@ -3,7 +3,7 @@ import Team from "../team/team";
 
 
 export default interface Match {
-    id?: number;
+    id?: string;
     name?: string;
     description?: string;
     creationDate?: string; // Assuming a string format, since LocalDate is not available in JavaScript/TypeScript

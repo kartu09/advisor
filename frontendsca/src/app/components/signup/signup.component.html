@@ -1,38 +1,38 @@
 <section class="vh-100 bernabeu-background">
   <div class="mask d-flex align-items-center h-100">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="container h-60">
+      <div class="row d-flex justify-content-center align-items-center h-100  ">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px;">
+          <div class="card gradient-custom-4" style="border-radius: 15px;">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+              <h2 class="text-uppercase text-center mb-5 color-white">Create an account</h2>
 
               <form (ngSubmit)="registrar(signupForm.value)" #signupForm="ngForm">
 
-                <div class="form-outline mb-4">
+                <div class="form-outline mb-4 color-white">
+                  <label class="form-label" for="email">EMAIL</label>
                   <input class="form-control form-control-lg" type="email" id="email" name="email" [(ngModel)]="usuario.email" required/>
-                  <label class="form-label" for="email">Email</label>
                 </div>
 
-                <div class="form-outline mb-4">
+                <div class="form-outline mb-4 color-white" >
+                  <p><label class="form-label" for="role">ROLE</label></p>
                   <select [(ngModel)]="usuario.role" name="role">
                     <option *ngFor="let role of roles" [value]="role" >{{ role }}</option>
                   </select>
-                  <p><label class="form-label" for="role">Role</label></p>
                 </div>
 
-                <div class="form-outline mb-4">
+                <div class="form-outline mb-4 color-white">
+                  <label class="form-label" for="password">PASSWORD</label>
                   <input class="form-control form-control-lg" type="password" id="password" name="password" [(ngModel)]="usuario.password" required/>
-                  <label class="form-label" for="password">Password</label>
                 </div>
 
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center color-white">
                   <button type="submit"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                    class="btn btn-success btn-block  gradient-custom-4  color-white">Register</button>
                 </div>
 
-                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a routerLink="/login"
-                    class="fw-bold text-body"><u>Login here</u></a></p>
+                <p class="text-center  mt-5 mb-0 color-white">Have already an account? <a routerLink="/login"
+                    class="fw-bold color-white"><u>Login here</u></a></p>
 
               </form>
 

@@ -8,4 +8,5 @@ export default interface Team {
   players?: Player[]; // Assuming a team can have zero or more players
   creationDate: string; // Assuming a string format, since LocalDate is not available in JavaScript/TypeScript
   coachId?: string;
+  coachEmail?:string;
 }

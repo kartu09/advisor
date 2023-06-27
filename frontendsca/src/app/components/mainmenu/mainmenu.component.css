@@ -14,9 +14,14 @@
 
 .maxheight {
   height: 100%;
+  
 }
 
 .mainicon {
   display: flex;
   align-items: center;
+}
+
+.greyColor{
+  background-color: darkslategray;
 }

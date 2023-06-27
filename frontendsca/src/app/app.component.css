@@ -2,9 +2,16 @@
   position: absolute;
   width: 100%;
   height: fit-content;
-
+  
+}
+.header {
+  background-color: darkslategray;
 }
 
 .bodySpace {
   padding-top: 50px;
+}
+
+.greyColor{
+  background-color: rgb(72, 104, 104);
 }

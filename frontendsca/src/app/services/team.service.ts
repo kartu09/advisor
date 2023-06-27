@@ -29,6 +29,7 @@ export class TeamService {
   createTeam(team: Team){
     const teamRef = collection(this.firestore, 'team');
     team.coachId = this.authService.getUserId();
+    team.coachEmail = this.authService.getUserEmail();
 		return addDoc(teamRef, team);
   }
 
