@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { User } from '../../interfaces/usuario/Usuario';
 import { UserService } from '../../services/user.service';
+import Usuario from 'src/app/interfaces/usuario/Usuario';
 
 @Component({
   selector: 'app-user',
@@ -8,7 +8,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
-  users: User[] | undefined;
+  users: Usuario[] | undefined;
 
   constructor(private userService: UserService) {}
 

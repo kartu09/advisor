@@ -20,8 +20,14 @@
 .mainicon {
   display: flex;
   align-items: center;
+  font-family: fantasy;
+  font-weight: bold;
+  font-size: xx-large;
 }
 
 .greyColor{
   background-color: darkslategray;
+}
+.tablecolor {
+  background-color: ivory;
 }

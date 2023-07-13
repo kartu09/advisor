@@ -9,7 +9,7 @@ import Match from '../interfaces/match/match';
 })
 export class MatchService {
 
-  constructor(private firestore: Firestore) { }
+  constructor(public firestore: Firestore) { }
 
   // Método para obtener todos los equipos
   getAll(): Observable<Match[]> {
@@ -25,7 +25,16 @@ export class MatchService {
   // Método para crear un nuevo equipo
   createMatch(match: Match){
     match.creationDate = this.currentDate();
-    match.timePlayed = '0';
+    match.timePlayed = 0;
+    if (!match.timePlay  || match.timePlay == '') {
+      match.timePlay = 'PENDIENTE';
+    }
+    
+    if (!match.tacticas) {
+      match.tacticas = [];
+    }
+   
+    match.isTimeRunning = false;
     const matchRef = collection(this.firestore, 'match');
 		return addDoc(matchRef, match);
   }

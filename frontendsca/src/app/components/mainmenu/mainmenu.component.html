@@ -2,7 +2,7 @@
 <nav class="navbar navbar-dark navbar-inverse header greyColor ">
   <div class="container-fluid maxheight greyColor">
     <div class="navbar-header maxheight greyColor">
-      <a class="mainicon menuitem maxheight" routerLink="/home"><img src=""></a>
+      <a class="mainicon menuitem maxheight" routerLink="/home">SCA</a>
     </div>
     <ul class="menutop greyColor">
       <li class="active"><a class="menuitem maxheight" routerLink="/home">Home</a></li>
@@ -11,8 +11,8 @@
       <li class="maxheight" *ngIf="connected "><a class="menuitem maxheight" routerLink="/opiniones">MISTER</a></li> <!-- && (isCoach|| isAdmin) -->
       <li class="maxheight" *ngIf="connected "><a class="menuitem maxheight" routerLink="/tactics">Tacticas disponibles</a></li>
     </ul>
-
-    <h4 *ngIf="currentUser" >Usuario Autenticado: {{currentUser.email}}</h4>
+<!-- 
+    <h4 *ngIf="currentUser" >Usuario Autenticado: {{currentUser.email}}</h4> -->
 
     <ul class="navbar-right menutop greyColor">
       <li *ngIf="!connected" class="maxheight"><a class="menuitem maxheight button" routerLink="/signup">Sign Up</a></li>

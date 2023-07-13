@@ -1,11 +1,20 @@
 <div class="container" >
 
-    <!-- <div *ngIf="userAdmin" class="">
+    <div *ngIf="authenticated" class="container">
+        <div class="row mainicon">
+            SOCCER COACH ADVISOR
+        </div>
 
+        <div  class="row centrado" >
+            <app-match-table class=" background" [currentUser]="currentUser" [isMainPage]="true" [matchesGived]="showMatches"></app-match-table>
+       </div>
     </div>
-    <div ngIf="!userAdmin" class="">
 
-    </div> -->
+    <div *ngIf="!authenticated" class="container2">
+        <div class="row mainicon2">
+            SOCCER COACH ADVISOR
+        </div>
+    </div>
     
 </div>
 
